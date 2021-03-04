@@ -1,0 +1,46 @@
+{
+    "name": "rplidar_rosbridge",
+    "modules": [
+        "navigation",
+        "perception",
+        "planner",
+        "viewers",
+        "flatsim",
+      "//apps/samples/rplidar_rosbridge:rplidar_ros_bridge_components"
+    ],
+    "config": {
+      "ros_lidar_subscriber":
+      {   
+          "ros_lidar_subscriber":
+          {
+              "tick_period": "30Hz"
+          }
+      }
+    
+    },
+    "graph": {
+      "nodes": [
+        {
+          "name": "ros_lidar_subscriber",
+          "components": [
+            {
+              "name": "message_ledger",
+              "type": "isaac::alice::MessageLedger"
+            },
+            {
+              "name": "ros_lidar_subscriber",
+              "type": "isaac::rosbridge::RplidarRosBridge"
+            }
+          ]
+        }
+      ],
+      "edges": [
+        {
+            "source": "ros_lidar_subscriber/ros_lidar_subscriber/scan",
+            "target": "range_scan_flattening/isaac.perception.RangeScanFlattening/flatscan"
+        }
+      ]
+    }
+  }
+  
+  
