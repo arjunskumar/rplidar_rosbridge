@@ -35,10 +35,7 @@
         }
       ],
       "edges": [
-        {
-            "source": "ros_lidar_subscriber/ros_lidar_subscriber/scan",
-            "target": "range_scan_flattening/isaac.perception.RangeScanFlattening/flatscan"
-        }
+        
       ]
     }
   }
